@@ -1,5 +1,4 @@
 import os
-cmssw_base = os.environ['CMSSW_BASE']
 
 from ROOT import gROOT, gStyle, gSystem, TLatex, TClass
 import subprocess
@@ -62,9 +61,6 @@ if os.path.exists(historyPath):
     readline.read_history_file(historyPath)
 
 atexit.register(save_history)
-## macroPath = gROOT.GetMacroPath()
-## macroPath += os.environ['CMSSW_BASE'] + '/src/ElectroWeakAnalysis/VPlusJets/test:'
-## gROOT.SetMacroPath(macroPath)
 del atexit, readline, rlcompleter, save_history, historyPath
 
 gROOT.SetStyle('Plain')
@@ -105,7 +101,8 @@ gStyle.SetLabelOffset(0.007, "XYZ")
 gStyle.SetLabelSize(0.06, "XYZ")
 gStyle.SetNdivisions(505, "XYZ")
 
-if (gSystem.DynamicPathName("libFWCoreFWLite.so",True)):
+try:
+    cmssw_base = os.environ['CMSSW_BASE']
     gROOT.GetInterpreter().AddIncludePath(cmssw_base + '/src')
     gSystem.AddIncludePath('-I"' + cmssw_base + '/src"')
     if not RooFitInclude():
@@ -115,11 +112,11 @@ if (gSystem.DynamicPathName("libFWCoreFWLite.so",True)):
         RooFitInclude()
         print 'returning to working directory', workingdir
         os.chdir(workingdir)
+except KeyError as e:
+    print "not in CMSSW release"
 
-    gROOT.ProcessLine('.L RooErfExpPdf.cxx+')
-    gROOT.ProcessLine('.L RooErfPdf.cxx+')
-
-
+gROOT.ProcessLine('.L RooErfExpPdf.cxx+')
+gROOT.ProcessLine('.L RooErfPdf.cxx+')
 
 print 'end of pyroot_logon'
 
