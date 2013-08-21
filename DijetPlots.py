@@ -16,6 +16,12 @@ effs = { 'qcd' : 11402./1.e5,
           '60' : 8222./1.e4
           } # overal efficiency * acceptances
 
+colors = { '30' : kRed + 1,
+           '40' : kCyan + 2,
+           '50' : kGreen + 1,
+           '60' : kMagenta +2
+           }
+
 lumis = [ 1,
           100,
           1000,
@@ -114,9 +120,15 @@ def buildPdfs(ws, mass=None):
     qstar50Pdf(ws, mass)
     qstar60Pdf(ws, mass)
 
+def makeSumPdf(ws, component, Nqcd, Nqstar):
+    return ws.factory('SUM::sum_%sTeV(%.4f*qstar_%sTeV,qcd)' % \
+                      (component, Nqstar/float(Nqcd+Nqstar), component))
+
 ws_qstar = RooWorkspace('qstar', 'qstar')
 mass = ws_qstar.factory('mass[20, 100]')
 mass.setUnit('TeV')
+mass.SetTitle('dijet mass')
+mass.setPlotLabel(mass.GetTitle())
 mass.setBins(80)
 obs = RooArgSet(mass)
 
@@ -138,11 +150,12 @@ for L in lumis:
                 RooFit.LineColor(kBlue+2)
                 )
         else:
+            # makeSumPdf(ws_qstar, component, N_qcd, N).plotOn(
             ws_qstar.pdf('qstar_%sTeV' % component).plotOn(
                 plot,
                 RooFit.Normalization(N, RooAbsReal.NumEvent),
                 RooFit.LineStyle(kDashed),
-                RooFit.LineColor(kRed+1)
+                RooFit.LineColor(colors[component])
                 )
             mean = ws_qstar.var('mean_%sTeV' % component).getVal()
             sigma = ws_qstar.var('sigma_%sTeV' % component).getVal()
@@ -164,5 +177,56 @@ plot.Draw()
 gPad.SetLogy()
 gPad.Update()
 
+import math
+
+logline = 4
+line = 2*10**logline
+logLineSpace = 5e3/line
+print logline, line, logLineSpace
+L = TLatex()
+L.SetTextFont(42);
+L.SetTextAlign(31);
+L.DrawLatex(95., line, 'jets: |#eta| < 1., p_{T} > 10 TeV')
+logline -= logLineSpace
+line *= logLineSpace
+print logline, line
+L.DrawLatex(95, line, '100TeV pp VLHC')
+logline -= logLineSpace
+line *= logLineSpace
+print logline, line
+L.DrawLatex(95., line, '#scale[0.5]{#lower[-0.15]{#it{#int}}}#it{L} dt = 3 ab^{-1}')
+
+gPad.Update()
+
+
+
 gPad.Print('qstar_100TeV.png')
 gPad.Print('qstar_100TeV.pdf')
+
+
+c2 = TCanvas()
+L2 = TLatex()
+L2.SetTextFont(42);
+c2.SetLogy()
+gr = TGraph('ExpectedLimits.txt')
+gr.SetName('expLimits')
+gr.Draw('al')
+gr.SetLineColor(kBlue+2)
+gr.SetLineWidth(2)
+gr.SetLineStyle(kDashed)
+gPad.Update()
+gr.GetXaxis().SetLimits(30, 60)
+gr.GetXaxis().SetTitle('q* mass (TeV)')
+gr.GetYaxis().SetTitle('95% CL expected limit #sigma/#sigma_{theory}')
+OneAxis = TLine(30., 1., 60., 1.)
+OneAxis.SetLineColor(kRed)
+OneAxis.SetLineWidth(2)
+OneAxis.Draw()
+L2.DrawLatex(32, 5., '100TeV pp VLHC')
+L2.DrawLatex(32, 2.5, '#scale[0.5]{#lower[-0.15]{#it{#int}}}#it{L} dt = 3 ab^{-1}')
+gPad.Update()
+
+gPad.Print('qstar_limits.png')
+gPad.Print('qstar_limits.pdf')
+
+
