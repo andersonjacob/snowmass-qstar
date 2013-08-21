@@ -1,0 +1,100 @@
+%%  This is the driver file for working group reports contributed 
+%%   to the Snowmass 2013 proceedings
+
+%%  This file includes brings in all the necessary files to provide the
+%%  format of the Proceedings
+%%
+%%  D. Hitlin   9/23/03   derived from the BABAR Physics Book format
+
+%%  Please do not change anything in this file, except to include the
+%%  name of your file on the next to last line of this file
+
+%%  To use LATEX with this format, you must have the follwing files 
+%%  in the same directory as your text source and figure files
+%%  tcibook.cls
+%%  fancyhea.sty
+%%  work.sty
+%%  epsfig.sty
+%%  workshopsym.tex       This file provides macros for many common symbols
+%%                         Using these macros will provide uniformity of notation
+%%                         for the basic particle symbols, units, etc.
+%%
+%%  These provide the page size, type style, headings, etc.
+
+
+\documentclass{tcibook}
+\usepackage{fancyhea}
+\usepackage{work}
+\usepackage{bm}       %    enables bold math symbols  e.g.  \bm{\gamma}
+\usepackage{graphicx}
+\usepackage{hyperref}      % hypertext links %%ARXIV
+
+\input workshopsymbols.tex      %   standard macros for common HEP terms
+
+\setlength{\headheight}{14pt}
+
+% subsubsections are numbered as well as chapters, sections and subsections.
+\setcounter{secnumdepth}{3}
+
+\begin{document}
+
+\def\bibname{References}
+\bibliographystyle{plain}
+
+\raggedbottom
+
+\pagenumbering{roman}
+
+\parindent=0pt
+\parskip=8pt
+\setlength{\evensidemargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\marginparsep}{0.0in}
+\setlength{\marginparwidth}{0.0in}
+\marginparpush=0pt
+
+% The content begins here
+
+\pagenumbering{arabic}
+
+\newcommand {\met}{\ensuremath{E^{\rm miss}_{\rm T}}}
+\newcommand {\pt}{\ensuremath{p_{\rm T}}}
+\newcommand {\hadt}{\ensuremath{H_{\rm T}}}
+\newcommand {\hgt}{\ensuremath{H^{*}_{\rm T}}}
+
+
+
+\renewcommand{\chapname}{chap:intro_}
+\renewcommand{\chapterdir}{.}
+\renewcommand{\arraystretch}{1.25}
+\addtolength{\arraycolsep}{-3pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%     All of your files should be in a subdirectory.  Here the
+%%%     subdirectory is called Magnetism  .   The title of your
+%%%     report should be   wgreport.tex in that subdirectory.  Input
+%%%     that file here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input QstarVLHC/wgreport.tex
+%\input ChargedLeptons/wgreport.tex
+%\input HeavyPhotons/wgreport.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   Your subdirectory (here Magnetism) should include
+%%%    the files:
+%%%           wgreport.tex
+%%%           authorlist.tex
+%%%         and all needed figures in pdf format
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+
+

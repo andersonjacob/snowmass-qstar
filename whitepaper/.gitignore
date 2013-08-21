@@ -1,0 +1,10 @@
+*.py[cod]
+*~
+*.d
+*.so
+*.root
+*.png
+*.aux
+*.dvi
+*.out
+*.log
