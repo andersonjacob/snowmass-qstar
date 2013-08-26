@@ -226,6 +226,9 @@ L2.DrawLatex(32, 5., '100TeV pp VLHC')
 L2.DrawLatex(32, 2.5, '#scale[0.5]{#lower[-0.15]{#it{#int}}}#it{L} dt = 3 ab^{-1}')
 gPad.Update()
 
+gr2 = TGraph(gr.GetN(), gr.GetY(), gr.GetX())
+print 'exclusion upto q* mass of %.2f TeV' % gr2.Eval(1.)
+
 gPad.Print('qstar_limits.png')
 gPad.Print('qstar_limits.pdf')
 
