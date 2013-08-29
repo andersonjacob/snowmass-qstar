@@ -4,3 +4,4 @@
 *.so
 *.root
 *.png
+.DS_Store
