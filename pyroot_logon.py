@@ -57,9 +57,12 @@ def save_history(historyPath=historyPath):
     readline.set_history_length(1000)
     readline.write_history_file(historyPath)
 
-if os.path.exists(historyPath):
-    readline.read_history_file(historyPath)
-
+try:
+    if os.path.exists(historyPath):
+        readline.read_history_file(historyPath)
+except IOError as e:
+    print "error reading history",e
+        
 atexit.register(save_history)
 del atexit, readline, rlcompleter, save_history, historyPath
 

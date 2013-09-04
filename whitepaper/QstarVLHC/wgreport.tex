@@ -5,34 +5,36 @@
 
 \input QstarVLHC/authorlist.tex
 
-We look for a dijet resonance corresponding to an excited quark $q^*$
+I look for a dijet resonance produced by an excited quark $q^*$
 in a simulated sample corresponding to 3\,ab$^{-1}$ of $pp$ collisions
-at $\sqrt{s} = 100$\,TeV.  Using a cut and count analysis approach we
-are able to explore $q^*$ masses upto 50\,TeV, corresponding to a
+at $\sqrt{s} = 100$\,TeV.  Using a cut and count analysis approach I
+am able to explore $q^*$ masses up to 50\,TeV, corresponding to a
 length scale of around 4\,am.
 
 \section{Introduction}
 
 At the new energy regime afforded by a $\sqrt{s} =100$\,TeV $pp$
-collider (VLHC)~\cite{Ambrosio:2001ej}, we search for possible
-structure to the quarks of the standard model \cite{Baur:1989kv,
+collider (VLHC)~\cite{Ambrosio:2001ej}, I could search for possible
+structure of the quarks of the standard model \cite{Baur:1989kv,
   Baur:1987ga, Harris:1996ct}.  The primary background for a signal of
 this type is the QCD dijet production.
 
 \section{Data and detector simulation}
 
-We utilize \textsc{pythia} and the CTEQ6L1 PDF's to genererate both
-background and signal events and provide parton showering.  The center
-of mass energy of the $pp$ collisions is 100\,TeV.  We use the
-``Snowmass'' detector~\cite{SnowDet}, based on the
-Delphes~\cite{Delphes} detector simulation package, to simulate the
-detector response.  The foreseen rate for ``pile-up'' $pp$
+I utilize \textsc{pythia}~\cite{Sjostrand:2006za} and the CTEQ6L1
+PDF's to genererate both background and signal events and provide
+parton showering.  The center of mass energy of the $pp$ collisions is
+100\,TeV.  I use the ``Snowmass'' detector%~\cite{SnowDet}
+, based on
+the Delphes~\cite{Delphes} detector simulation package, to simulate
+the detector response.  The foreseen rate for ``pile-up'' $pp$
 interactions is an average of 140 minimum bias interactions per bunch
 crossing.  The integrated liminosity is expected to reach
-3\,ab$^{-1}$.  During the production of the signal samples, we use the
+3\,ab$^{-1}$.  During the production of the signal samples, I use the
 convention $\Lambda = m_{q^*}$.  The cross-sections reported by
 \textsc{pythia} for the considered processes are contained in
-Table~\ref{tab:qstar_xsec}.
+Table~\ref{tab:qstar_xsec}.  As in~\cite{Baur:1989kv} the branching
+fraction to dijets is 85\%.  
 
 \begin{table}
 \caption{\label{tab:qstar_xsec} Cross-sections for signal processes.}
@@ -52,28 +54,28 @@ $q^*$ mass & cross-sections (fb) \\
 
 \section{Analysis}
 
-Within the sample, we select the two jets with the largest
+From the signal and background samples, I select the two jets with the largest
 $p_\mathrm{T}$.  To reduce the relative contribution of the QCD dijet
-production, we require that the jet $p_\mathrm{T} > 10$\,TeV and $|\eta
-| < 1.0$.  We use the dijet invariant mass spectrum to separate the
+production, I require that the jet $p_\mathrm{T} > 10$\,TeV and $|\eta
+| < 1.0$.  I use the dijet invariant mass spectrum to separate the
 signal and background components.  The mass spectrum for the
 background and various signals is shown in
 Fig.~\ref{fig:qstar_vlhc}(left).  
 
-Because of the huge cross-section for the QCD process, we parameterize
+Because of the large cross-section for the QCD process, I parameterize
 the spectral shape from a large sample of simulated events and scale
 this shape to provide our background estimate.  The functional form
-selected for the background is a exponential decay with an error
-funtion turn-on at the low-mass end of the specturm.  The line-shapes
+selected for the background is an exponential decay with an error
+function turn-on at the low-mass end of the specturm.  The line-shapes
 for the various signal hypotheses are parameterized by a Gaussian
-shape for the peak and a wide structure to capture poorly
+distribution for the peak and a wide structure to capture poorly
 reconstructed events.
 
-Limits are derived using a simple counting method.  We select a signal
+Limits are derived using a simple counting method.  I select a signal
 window corresponding to $\pm 2\sigma$ of the peaking component of the
 signal.  Using the signal and background counts within the signal
-window, we place an asymptotic 95\% CL upper limit on the
-cross-section for a given $q^*$ mass.  In these limits we do not
+window, I place an asymptotic 95\% CL upper limit on the
+cross-section for a given $q^*$ mass.  In these limits I do not
 include any systematic uncertainties.  Given the simplicity of the
 analysis, degradations due to systematic uncertainties can be
 compensated through more advanced analysis techniques.
@@ -94,7 +96,7 @@ compensated through more advanced analysis techniques.
 \end{figure}
 
 Figure~\ref{fig:qstar_vlhc}(right) shows the expected limit as a
-function of $q^2$ mass.  We can expect to explore masses upto 50\,TeV
+function of $q^*$ mass.  I can expect to explore masses upto 50\,TeV
 using the full 3\,ab$^{-1}$ of integrated luminosity of the the VLHC.
 A reach of 50\,TeV would study substructure within quarks on the order
 of 4\,am.
@@ -127,6 +129,15 @@ of 4\,am.
   [hep-ph/9609319].
   %%CITATION = HEP-PH/9609319;%%
   %7 citations counted in INSPIRE as of 29 Aug 2013
+
+%\cite{Sjostrand:2006za}
+\bibitem{Sjostrand:2006za} 
+  T.~Sjostrand, S.~Mrenna and P.~Z.~Skands,
+  ``PYTHIA 6.4 Physics and Manual,''
+  JHEP {\bf 0605}, 026 (2006)
+  [hep-ph/0603175].
+  %%CITATION = HEP-PH/0603175;%%
+  %4341 citations counted in INSPIRE as of 03 Sep 2013
 
 \bibitem{Delphes}
   J.~de Favereau, C.~Delaere, P.~Demin, A.~Giammanco, V.~Lema\^{\i}tre, A.~Mertens and M.~Selvaggi,

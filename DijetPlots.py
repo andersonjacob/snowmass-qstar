@@ -186,11 +186,11 @@ print logline, line, logLineSpace
 L = TLatex()
 L.SetTextFont(42);
 L.SetTextAlign(31);
-L.DrawLatex(95., line, 'jets: |#eta| < 1., p_{T} > 10 TeV')
+L.DrawLatex(95., line, 'jets: |#eta| < 1.0, p_{T} > 10 TeV')
 logline -= logLineSpace
 line *= logLineSpace
 print logline, line
-L.DrawLatex(95, line, '100TeV pp VLHC')
+L.DrawLatex(95, line, '100 TeV pp VLHC')
 logline -= logLineSpace
 line *= logLineSpace
 print logline, line
@@ -222,7 +222,7 @@ OneAxis = TLine(30., 1., 60., 1.)
 OneAxis.SetLineColor(kRed)
 OneAxis.SetLineWidth(2)
 OneAxis.Draw()
-L2.DrawLatex(32, 5., '100TeV pp VLHC')
+L2.DrawLatex(32, 5., '100 TeV pp VLHC')
 L2.DrawLatex(32, 2.5, '#scale[0.5]{#lower[-0.15]{#it{#int}}}#it{L} dt = 3 ab^{-1}')
 gPad.Update()
 
